@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silvia Costa Cookier - Catálogo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Corrigido para Branco Puro (#ffffff) para sumir com as emendas laterais do Google Sites */
+        html, body {
+            background-color: #ffffff;
+            color: #333333;
+            padding-bottom: 140px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+            display: none; 
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 650px;
+            padding: 12px;
+        }
+
+        /* Top Header Card */
+        .header-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 20px 14px;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(179, 16, 63, 0.06);
+            margin-bottom: 15px;
+            border: 1px solid #f3ecef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-card h1 {
+            font-size: 1.5rem;
+            color: #2c1a1d;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header-card p {
+            font-size: 0.88rem;
+            color: #706063;
+            padding: 0 5px;
+            line-height: 1.4;
+        }
+
+        /* Alert/Notice Banner */
+        .notice-banner {
+            background-color: #fff9e6;
+            border-radius: 16px;
+            padding: 14px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5c4d33;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            border: 1px solid #f5ebd2;
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .section-divider::before, .section-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e8dedf;
+        }
+
+        .section-divider span {
+            padding: 0 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #b3103f;
+            text-transform: uppercase;
+        }
+
+        /* Product Card Layout */
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #f0e6e8;
+            margin-bottom: 20px;
+            padding: 14px;
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 260px; 
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .product-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c1a1d;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            wrap: wrap;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+
+        .product-price {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #b3103f;
+        }
+
+        .price-unit {
+            font-size: 0.8rem;
+            color: #8c7679;
+            font-weight: 400;
+        }
+
+        .badge-recheio {
+            background-color: #fff0f3;
+            color: #b3103f;
+            font-size: 0.72rem;
+            padding: 3px 6px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .min-order {
+            font-size: 0.78rem;
+            color: #8c7679;
+            margin-bottom: 10px;
+        }
+
+        /* Quantity and Action Row */
+        .action-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e0d5d7;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #faf6f7;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            width: 38px;
+            height: 38px;
+            font-size: 1.2rem;
+            color: #b3103f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            background-color: #f3ecef;
+        }
+
+        .qty-input {
+            width: 42px;
+            height: 38px;
+            text-align: center;
+            border: none;
+            background: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2c1a1d;
+            border-left: 1px solid #e0d5d7;
+            border-right: 1px solid #e0d5d7;
+        }
+
+        .choose-btn {
+            flex: 1;
+            background-color: #b3103f;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            height: 38px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .choose-btn:hover {
+            background-color: #910a31;
+        }
+
+        .choose-btn.selected {
+            background-color: #2c1a1d;
+            color: #ffffff;
+        }
+
+        /* Fixed Bottom WhatsApp Banner */
+        .whatsapp-footer-banner {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 24px);
+            max-width: 580px;
+            background-color: #b3103f;
+            color: #ffffff;
+            border-radius: 14px;
+            padding: 12px 15px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(179, 16, 63, 0.2);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-footer-banner.active-green {
+            background-color: #25d366 !important;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4) !important;
+        }
+
+        .wp-title {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+
+        .wp-subtitle {
+            font-size: 0.78rem;
+            opacity: 0.95;
+        }
+
+        /* Floating Instagram Button */
+        .instagram-float-btn {
+            position: fixed;
+            bottom: 95px;
+            right: 15px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            z-index: 99999;
+            transition: transform 0.2s ease;
+        }
+
+        .instagram-float-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 480px) {
+            .product-image-container {
+                height: 200px; 
+            }
+            .header-card h1 {
+                font-size: 1.35rem;
+            }
+            .product-title {
+                font-size: 1rem;
+            }
+            .wp-title {
+                font-size: 0.92rem;
+            }
+            .wp-subtitle {
+                font-size: 0.72rem;
+            }
+            .instagram-float-btn {
+                bottom: 90px;
+                right: 12px;
+                width: 44px;
+                height: 44px;
+            }
+            .instagram-float-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+            .whatsapp-footer-banner {
+                bottom: 12px;
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Instagram Button -->
+    <a href="https://www.instagram.com/silviacostacookier/" target="_blank" class="instagram-float-btn" title="Siga no Instagram">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+    </a>
+
+    <div class="main-container">
+
+        <!-- Top Header Card -->
+        <header class="header-card">
+            <h1>Silvia Costa Cookier</h1>
+            <p>Selecione os produtos de interesse e solicite seu orçamento personalizado</p>
+        </header>
+
+        <!-- Alert/Notice Banner -->
+        <section class="notice-banner">
+            ✨ <strong>Escolha os produtos que mais gostar</strong> para agilizar seu atendimento 💕<br>
+            💬 Não encontrou exatamente o que procura? Criamos temas e projetos personalizados sob encomenda.
+        </section>
+
+        <!-- Section: Biscoitos Decorados -->
+        <div class="section-divider">
+            <span>Biscoitos Decorados</span>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="https://i.postimg.cc/NGXLNWy9/Captura-de-tela-2026-06-25-131136.png" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" alt="Biscoito Decorado">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Biscoito Decorado</h3>
+                <div class="price-row">
+                    <span class="product-price">R$ 15,00</span>
+                    <span class="price-unit">/un</span>
+                    <span class="badge-recheio">✨ Personalizado</span>
+                </div>
+                <p class="min-order">Pedido mínimo: 5 un</p>
+                
+                <div class="action-row">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="changeQty('qty-biscoito', -1, 5)">-</button>
+                        <input type="text" id="qty-biscoito" class="qty-input" value="5" readonly>
+                        <button class="qty-btn" onclick="changeQty('qty-biscoito', 1, 5)">+</button>
+                    </div>
+                    <button class="choose-btn" id="btn-biscoito" onclick="selectProduct('qty-biscoito', 'Biscoito Decorado', 'btn-biscoito')">Escolher</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Macarons -->
+        <div class="section-divider">
+            <span>Macarons</span>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="https://i.postimg.cc/brfYcwGf/Captura-de-tela-2026-06-25-131225.png" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" alt="Macaron Tradicional">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Macaron Tradicional</h3>
+                <div class="price-row">
+                    <span class="product-price">R$ 9,00</span>
+                    <span class="price-unit">/un</span>
+                    <span class="badge-recheio">🧁 c/ recheio</span>
+                </div>
+                <p class="min-order">Pedido mínimo: 5 un</p>
+                
+                <div class="action-row">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="changeQty('qty-macaron', -1, 5)">-</button>
+                        <input type="text" id="qty-macaron" class="qty-input" value="5" readonly>
+                        <button class="qty-btn" onclick="changeQty('qty-macaron', 1, 5)">+</button>
+                    </div>
+                    <button class="choose-btn" id="btn-macaron" onclick="selectProduct('qty-macaron', 'Macaron Tradicional', 'btn-macaron')">Escolher</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Fixed WhatsApp Sticky Footer Box -->
+    <a href="https://wa.me/5511973050555?text=Olá,%20Silvia!%20Vim%20do%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="whatsapp-footer-banner" id="whatsapp-btn">
+        <div class="wp-title">💬 Continuar atendimento no WhatsApp</div>
+        <div class="wp-subtitle">Mínimo de 5 unidades por item para encomendas 💕</div>
+    </a>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        let carrinhosDeCompra = {};
+
+        function changeQty(inputId, change, minVal) {
+            const input = document.getElementById(inputId);
+            let currentVal = parseInt(input.value);
+            currentVal += change;
+            if (currentVal < minVal) {
+                currentVal = minVal;
+            }
+            input.value = currentVal;
+        }
+
+        function selectProduct(inputId, productName, btnId) {
+            const inputVal = parseInt(document.getElementById(inputId).value);
+            const escolheuBtn = document.getElementById(btnId);
+
+            carrinhosDeCompra[productName] = inputVal;
+
+            escolheuBtn.textContent = "✓ Escolhido (" + inputVal + ")";
+            escolheuBtn.classList.add("selected");
+
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            whatsappBtn.classList.add('active-green');
+
+            gerarLinkWhatsapp();
+        }
+
+        function gerarLinkWhatsapp() {
+            let numeroTelefone = "5511973050555";
+            let textoBase = "Olá, Silvia! Vim do seu site e gostaria de solicitar um orçamento para os seguintes itens:\n\n";
+            let itensTexto = "";
+
+            for (const [nomeProduto, quantidade] of Object.entries(carrinhosDeCompra)) {
+                if (quantidade > 0) {
+                    itensTexto += "• " + quantidade + "x " + nomeProduto + "\n";
+                }
+            }
+
+            let textoFinal = textoBase + itensTexto + "\nAguardo o seu retorno para prosseguirmos! ✨";
+            let linkFinal = "https://wa.me/" + numeroTelefone + "?text=" + encodeURIComponent(textoFinal);
+            
+            document.getElementById('whatsapp-btn').href = linkFinal;
+        }
+    </script>
+
+</body>
+</html>
