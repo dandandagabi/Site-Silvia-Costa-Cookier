@@ -1,708 +1,416 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silvia Costa Cookier - Catálogo</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-            scroll-behavior: smooth;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silvia Costa Cookier</title>
 
-        html, body {
-            background-color: #fdfafb;
-            color: #4a3e40;
-            padding-bottom: 140px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            -ms-overflow-style: none;  
-            scrollbar-width: none;  
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{background:#fdfafb;display:flex;justify-content:center;padding-bottom:150px;color:#4a3e40}
+.main-container{width:100%;max-width:650px;padding:12px}
 
-        html::-webkit-scrollbar, body::-webkit-scrollbar {
-            display: none; 
-        }
+.header{text-align:center;margin-bottom:15px;background:#fff;border-radius:20px;padding:24px 16px;border:1px solid #f9eff2;box-shadow:0 6px 16px rgba(230,164,180,.08)}
+.header h1{font-size:1.6rem;color:#5c4447;font-weight:800;margin-bottom:8px}
+.header p{font-size:.9rem;color:#8c7679}
 
-        .main-container {
-            width: 100%;
-            max-width: 650px;
-            padding: 12px;
-        }
+.notice-banner{background:#fffaf0;border-radius:16px;padding:14px;text-align:center;font-size:.85rem;color:#6e5d42;line-height:1.4;margin-bottom:20px;border:1px solid #f7eedb}
 
-        /* Top Header Card */
-        .header-card {
-            background-color: #ffffff;
-            border-radius: 20px;
-            padding: 24px 16px;
-            text-align: center;
-            box-shadow: 0 6px 16px rgba(230, 164, 180, 0.08);
-            margin-bottom: 15px;
-            border: 1px solid #f9eff2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
+.divider{margin:20px 0;display:flex;align-items:center;gap:10px;color:#d48c9c;font-size:.78rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+.divider:before,.divider:after{content:"";flex:1;height:1px;background:#f2e2e5}
 
-        .header-card h1 {
-            font-size: 1.6rem;
-            color: #5c4447;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
+.product-card{background:#fff;border-radius:22px;padding:14px;margin-bottom:20px;border:1px solid #f6e9ec;box-shadow:0 6px 18px rgba(0,0,0,.04);transition:.2s}
+.product-card:hover{transform:translateY(-2px)}
+.product-image-container{height:240px;border-radius:16px;overflow:hidden;margin-bottom:12px;background:#faf6f7}
+.product-image-container img{width:100%;height:100%;object-fit:cover;display:block}
+.product-title{font-size:1.15rem;font-weight:800;color:#4a3e40;margin-bottom:8px}
 
-        .header-card p {
-            font-size: 0.9rem;
-            color: #8c7679;
-            padding: 0 5px;
-            line-height: 1.4;
-        }
+.option-group{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.option-btn{padding:9px 14px;border-radius:999px;border:1px solid #ead6da;background:#fff;font-size:.8rem;font-weight:600;cursor:pointer;transition:.25s;color:#4a3e40}
+.option-btn:hover{transform:scale(1.03);background:#fff0f3}
+.option-btn.active{background:linear-gradient(135deg,#d48c9c,#c97384);color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(201,115,132,.25);transform:scale(1.05)}
 
-        /* Alert/Notice Banner */
-        .notice-banner {
-            background-color: #fffaf0;
-            border-radius: 16px;
-            padding: 14px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #6e5d42;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            border: 1px solid #f7eedb;
-        }
+.price-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.product-price{font-size:1.3rem;font-weight:900;color:#c97384}
+.price-unit{font-size:.8rem;color:#9c8588}
+.min-order{font-size:.78rem;color:#9c8588;margin-top:4px}
 
-        /* Section Dividers */
-        .section-divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            margin: 20px 0;
-        }
+.action-row{display:flex;gap:10px;margin-top:12px}
+.quantity-selector{display:flex;border:1px solid #ebdada;border-radius:12px;overflow:hidden;background:#fdfafb}
+.qty-btn{width:40px;height:40px;border:none;background:#fff;cursor:pointer;font-size:18px;color:#c97384;display:flex;align-items:center;justify-content:center}
+.qty-btn:hover{background:#fff0f3}
+.qty-input{width:45px;height:40px;text-align:center;border:none;border-left:1px solid #ebdada;border-right:1px solid #ebdada;font-weight:700;color:#5c4447;background:#fff}
+.choose-btn{flex:1;min-height:40px;border:none;border-radius:12px;background:#d48c9c;color:#fff;font-weight:700;font-size:.9rem;cursor:pointer;transition:.25s}
+.choose-btn:hover{background:#c97384;transform:scale(1.02)}
+.choose-btn.selected{background:#4a3e40}
 
-        .section-divider::before, .section-divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #f2e2e5;
-        }
+.whatsapp-footer-banner{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:580px;background:#e6a4b4;color:#fff;border-radius:16px;padding:14px 15px;text-align:center;box-shadow:0 8px 24px rgba(230,164,180,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;cursor:pointer;border:none}
+.whatsapp-footer-banner.active-green{background:#72cca7!important;box-shadow:0 8px 24px rgba(114,204,167,.35)!important}
+.wp-title{font-weight:700;font-size:1rem;margin-bottom:2px}
+.wp-subtitle{font-size:.78rem;opacity:.95}
 
-        .section-divider span {
-            padding: 0 12px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 1.2px;
-            color: #d48c9c; 
-            text-transform: uppercase;
-        }
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:999999;opacity:0;transition:opacity .3s}
+.modal-overlay.show{display:flex;opacity:1}
+.modal-content{background:#fff;width:100%;max-width:600px;max-height:90vh;border-radius:24px 24px 0 0;padding:20px 24px 30px;overflow-y:auto;transform:translateY(100%);transition:transform .3s;display:flex;flex-direction:column}
+.modal-overlay.show .modal-content{transform:translateY(0)}
+.modal-drag-indicator{width:40px;height:4px;background:#ebdada;border-radius:4px;margin:0 auto 15px}
+.modal-header-text{text-align:center;margin-bottom:20px}
+.modal-header-text h2{font-size:1.3rem;color:#2c1a1d;margin-bottom:4px}
+.modal-header-text p{font-size:.85rem;color:#8c7679}
 
-        /* Product Card Layout */
-        .product-card {
-            background-color: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 6px 14px rgba(230, 164, 180, 0.05);
-            border: 1px solid #f6e9ec;
-            margin-bottom: 20px;
-            padding: 14px;
-        }
+.order-summary-box{background:#fffafb;border:1px solid #f2e2e5;border-radius:12px;padding:12px 16px;margin-bottom:20px}
+.summary-title{font-size:.75rem;font-weight:700;color:#d48c9c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:block}
+.summary-items{list-style:none}
+.summary-items li{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;color:#5c4447;margin-bottom:6px;border-bottom:1px dashed #f2e2e5;padding-bottom:6px}
+.summary-items li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.summary-item-main{font-weight:700;display:block}
+.summary-item-details{font-size:.78rem;color:#9c8588;display:block;margin-top:2px}
 
-        .product-image-container {
-            width: 100%;
-            height: 260px; 
-            background-color: #faf6f7;
-            border-radius: 14px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 12px;
-        }
+.form-row{display:flex;gap:12px;margin-bottom:14px}
+.form-group{flex:1;display:flex;flex-direction:column;margin-bottom:14px}
+.form-group label{font-size:.85rem;font-weight:600;color:#5c4447;margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:12px;border:1px solid #ebdada;border-radius:10px;font-size:.95rem;color:#2c1a1d;background:#fff;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:#d48c9c}
+.form-group textarea{resize:vertical;min-height:80px}
 
-        .product-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+.btn-submit-whatsapp{background:#25d366;color:#fff;border:none;border-radius:12px;padding:14px;font-size:1rem;font-weight:700;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.btn-submit-whatsapp:hover{background:#1ebc5a}
+.btn-cancel{background:none;border:none;color:#d48c9c;font-size:.9rem;margin-top:15px;cursor:pointer;text-align:center;width:100%}
 
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #5c4447;
-        }
-
-        .price-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 2px;
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #c97384; 
-        }
-
-        .price-unit {
-            font-size: 0.8rem;
-            color: #9c8588;
-            font-weight: 400;
-        }
-
-        .badge-recheio {
-            background-color: #fff0f3;
-            color: #d48c9c;
-            font-size: 0.72rem;
-            padding: 4px 8px;
-            border-radius: 8px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .min-order {
-            font-size: 0.78rem;
-            color: #9c8588;
-            margin-bottom: 10px;
-        }
-
-        /* Quantity and Action Row */
-        .action-row {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ebdada;
-            border-radius: 10px;
-            overflow: hidden;
-            background-color: #fdfafb;
-        }
-
-        .qty-btn {
-            background: none;
-            border: none;
-            width: 38px;
-            height: 38px;
-            font-size: 1.2rem;
-            color: #c97384;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s;
-        }
-
-        .qty-btn:hover {
-            background-color: #fff0f3;
-        }
-
-        .qty-input {
-            width: 42px;
-            height: 38px;
-            text-align: center;
-            border: none;
-            background: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #5c4447;
-            border-left: 1px solid #ebdada;
-            border-right: 1px solid #ebdada;
-        }
-
-        .choose-btn {
-            flex: 1;
-            background-color: #d48c9c;
-            color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            height: 38px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .choose-btn:hover {
-            background-color: #c47c8c;
-        }
-
-        .choose-btn.selected {
-            background-color: #5c4447;
-            color: #ffffff;
-        }
-
-        /* Floating Bottom Bar (now opens modal) */
-        .whatsapp-footer-banner {
-            position: fixed;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 24px);
-            max-width: 580px;
-            background-color: #e6a4b4; 
-            color: #ffffff;
-            border-radius: 16px;
-            padding: 14px 15px;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(230, 164, 180, 0.25);
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .whatsapp-footer-banner.active-green {
-            background-color: #72cca7 !important;
-            box-shadow: 0 8px 24px rgba(114, 204, 167, 0.35) !important;
-        }
-
-        .wp-title {
-            font-weight: 700;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 2px;
-        }
-
-        .wp-subtitle {
-            font-size: 0.78rem;
-            opacity: 0.95;
-        }
-
-        /* Checkout Modal / Formulario */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: flex-end;
-            justify-content: center;
-            z-index: 999999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 600px;
-            max-height: 90vh;
-            border-radius: 24px 24px 0 0;
-            padding: 20px 24px 30px;
-            overflow-y: auto;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-overlay.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-drag-indicator {
-            width: 40px;
-            height: 4px;
-            background-color: #ebdada;
-            border-radius: 4px;
-            margin: 0 auto 15px;
-        }
-
-        .modal-header-text {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-header-text h2 {
-            font-size: 1.3rem;
-            color: #2c1a1d;
-            margin-bottom: 4px;
-        }
-
-        .modal-header-text p {
-            font-size: 0.85rem;
-            color: #8c7679;
-        }
-
-        .order-summary-box {
-            background-color: #fffafb;
-            border: 1px solid #f2e2e5;
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-        }
-
-        .summary-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #d48c9c;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .summary-items {
-            list-style: none;
-        }
-
-        .summary-items li {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: #5c4447;
-            margin-bottom: 4px;
-            border-bottom: 1px dashed #f2e2e5;
-            padding-bottom: 4px;
-        }
-        .summary-items li:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .form-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #5c4447;
-            margin-bottom: 6px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ebdada;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            color: #2c1a1d;
-            background-color: #ffffff;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #d48c9c;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .btn-submit-whatsapp {
-            background-color: #25d366;
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 1rem;
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-            transition: background-color 0.2s;
-        }
-
-        .btn-submit-whatsapp:hover {
-            background-color: #1ebc5a;
-        }
-
-        .btn-cancel {
-            background: none;
-            border: none;
-            color: #d48c9c;
-            font-size: 0.9rem;
-            margin-top: 15px;
-            cursor: pointer;
-            text-align: center;
-            width: 100%;
-        }
-
-        @media (max-width: 480px) {
-            .product-image-container { height: 200px; }
-            .whatsapp-footer-banner { bottom: 12px; width: calc(100% - 20px); }
-            .form-row { flex-direction: column; gap: 0; }
-        }
-    </style>
+@media(max-width:480px){
+.product-image-container{height:200px}
+.whatsapp-footer-banner{bottom:12px;width:calc(100% - 20px)}
+.form-row{flex-direction:column;gap:0;margin-bottom:0}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="main-container">
+<div class="main-container">
 
-        <!-- Top Header Card -->
-        <header class="header-card">
-            <h1>Silvia Costa Cookier</h1>
-            <p>Selecione os produtos de interesse e solicite seu orçamento personalizado</p>
-        </header>
+<div class="header">
+<h1>Silvia Costa Cookier</h1>
+<p>Monte seu pedido personalizado 💕</p>
+</div>
 
-        <!-- Alert/Notice Banner -->
-        <section class="notice-banner">
-            ✨ <strong>Escolha os produtos que mais gostar</strong> para agilizar seu atendimento 💕<br>
-            💬 Não encontrou exatamente o que procura? Criamos temas e projetos personalizados sob encomenda.
-        </section>
+<section class="notice-banner">
+✨ <strong>Escolha os produtos que mais gostar</strong> para agilizar seu atendimento 💕<br>
+💬 Não encontrou exatamente o que procura? Criamos temas e projetos personalizados sob encomenda.
+</section>
 
-        <!-- Section: Biscoitos Decorados -->
-        <div class="section-divider">
-            <span>Biscoitos Decorados</span>
-        </div>
+<div class="divider">Biscoitos</div>
 
-        <div class="product-card">
-            <div class="product-image-container">
-                <img src="https://i.postimg.cc/NGXLNWy9/Captura-de-tela-2026-06-25-131136.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;" alt="Biscoito Decorado">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Biscoito Decorado</h3>
-                <div class="price-row">
-                    <span class="product-price">R$ 15,00</span>
-                    <span class="price-unit">/un</span>
-                    <span class="badge-recheio">✨ Personalizado</span>
-                </div>
-                <p class="min-order">Pedido mínimo: 5 un</p>
-                
-                <div class="action-row">
-                    <div class="quantity-selector">
-                        <button class="qty-btn" onclick="changeQty('qty-biscoito', -1, 5)">-</button>
-                        <input type="text" id="qty-biscoito" class="qty-input" value="5" readonly>
-                        <button class="qty-btn" onclick="changeQty('qty-biscoito', 1, 5)">+</button>
-                    </div>
-                    <button class="choose-btn" id="btn-biscoito" onclick="selectProduct('qty-biscoito', 'Biscoito Decorado', 'btn-biscoito')">Escolher</button>
-                </div>
-            </div>
-        </div>
+<div class="product-card">
+<div class="product-image-container">
+<img src="https://i.postimg.cc/NGXLNWy9/Captura-de-tela-2026-06-25-131136.png" alt="Biscoito Decorado">
+</div>
 
-        <!-- Section: Macarons -->
-        <div class="section-divider">
-            <span>Macarons</span>
-        </div>
+<div class="product-title">Biscoito Decorado</div>
 
-        <div class="product-card">
-            <div class="product-image-container">
-                <img src="https://i.postimg.cc/brfYcwGf/Captura-de-tela-2026-06-25-131225.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;" alt="Macaron Tradicional">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Macaron Tradicional</h3>
-                <div class="price-row">
-                    <span class="product-price">R$ 9,00</span>
-                    <span class="price-unit">/un</span>
-                    <span class="badge-recheio">🧁 c/ recheio</span>
-                </div>
-                <p class="min-order">Pedido mínimo: 5 un</p>
-                
-                <div class="action-row">
-                    <div class="quantity-selector">
-                        <button class="qty-btn" onclick="changeQty('qty-macaron', -1, 5)">-</button>
-                        <input type="text" id="qty-macaron" class="qty-input" value="5" readonly>
-                        <button class="qty-btn" onclick="changeQty('qty-macaron', 1, 5)">+</button>
-                    </div>
-                    <button class="choose-btn" id="btn-macaron" onclick="selectProduct('qty-macaron', 'Macaron Tradicional', 'btn-macaron')">Escolher</button>
-                </div>
-            </div>
-        </div>
+<div class="option-group">
+<button class="option-btn active" onclick="toggle(this,'biscoitoTipo','Padrão',calcBiscoito)">Padrão</button>
+<button class="option-btn" onclick="toggle(this,'biscoitoTipo','Personalizado',calcBiscoito)">Personalizado</button>
+</div>
 
-    </div>
+<div class="option-group">
+<button class="option-btn active" onclick="toggle(this,'biscoitoTam','5-10 cm',calcBiscoito)">5-10 cm</button>
+<button class="option-btn" onclick="toggle(this,'biscoitoTam','10-15 cm',calcBiscoito)">10-15 cm</button>
+<button class="option-btn" onclick="toggle(this,'biscoitoTam','18+ cm',calcBiscoito)">18+ cm</button>
+</div>
 
-    <!-- Fixed Bottom Banner (Triggers Modal) -->
-    <button class="whatsapp-footer-banner" id="whatsapp-btn" onclick="abrirModal()">
-        <div class="wp-title">💬 Finalizar e ir para WhatsApp</div>
-        <div class="wp-subtitle">Mínimo de 5 unidades por item para encomendas 💕</div>
-    </button>
+<div class="price-row">
+<div class="product-price" id="price-biscoito">R$ 10,00</div>
+<span class="price-unit">/un</span>
+</div>
+<p class="min-order">Pedido mínimo: 5 un</p>
 
-    <!-- Modal de Checkout / Formulário -->
-    <div class="modal-overlay" id="checkout-modal">
-        <div class="modal-content">
-            <div class="modal-drag-indicator"></div>
-            
-            <div class="modal-header-text">
-                <h2>💕 Vamos finalizar seu atendimento</h2>
-                <p>Preencha rapidinho pra te chamarmos no WhatsApp 😊</p>
-            </div>
+<div class="action-row">
+<div class="quantity-selector">
+<button class="qty-btn" onclick="changeQty('qty-biscoito',-1,5)">-</button>
+<input type="text" id="qty-biscoito" class="qty-input" value="5" readonly>
+<button class="qty-btn" onclick="changeQty('qty-biscoito',1,5)">+</button>
+</div>
+<button class="choose-btn" id="btn-biscoito" onclick="selectProduct('biscoito')">Escolher</button>
+</div>
+</div>
 
-            <div class="order-summary-box">
-                <span class="summary-title" id="summary-count">0 itens selecionados</span>
-                <ul class="summary-items" id="summary-list">
-                    <!-- Itens via JS -->
-                </ul>
-            </div>
+<div class="divider">Macarons</div>
 
-            <div class="form-group">
-                <label>Seu nome *</label>
-                <input type="text" id="c-nome" placeholder="Como você se chama?">
-            </div>
+<div class="product-card">
+<div class="product-image-container">
+<img src="https://i.postimg.cc/brfYcwGf/Captura-de-tela-2026-06-25-131225.png" alt="Macaron">
+</div>
 
-            <div class="form-group">
-                <label>Seu WhatsApp *</label>
-                <input type="tel" id="c-wpp" placeholder="(11) 99999-9999">
-            </div>
+<div class="product-title">Macaron</div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Data do evento *</label>
-                    <input type="date" id="c-data">
-                </div>
-                <div class="form-group">
-                    <label>Tema *</label>
-                    <input type="text" id="c-tema" placeholder="Ex: Unicórnio">
-                </div>
-            </div>
+<div class="option-group">
+<button class="option-btn active" onclick="toggle(this,'macaronTipo','Padrão',calcMacaron)">Padrão</button>
+<button class="option-btn" onclick="toggle(this,'macaronTipo','Personalizado',calcMacaron)">Personalizado</button>
+</div>
 
-            <div class="form-group">
-                <label>CEP de entrega (opcional)</label>
-                <input type="text" id="c-cep" placeholder="00000-000">
-            </div>
+<div class="option-group">
+<button class="option-btn active" onclick="toggle(this,'recheio','Prestígio')">Prestígio</button>
+<button class="option-btn" onclick="toggle(this,'recheio','Coco')">Coco</button>
+<button class="option-btn" onclick="toggle(this,'recheio','Pistache')">Pistache</button>
+<button class="option-btn" onclick="toggle(this,'recheio','Maracujá')">Maracujá</button>
+</div>
 
-            <div class="form-group">
-                <label>Observações (opcional)</label>
-                <textarea id="c-obs" placeholder="Algo importante pra gente saber..."></textarea>
-            </div>
+<div class="price-row">
+<div class="product-price" id="price-macaron">R$ 9,50</div>
+<span class="price-unit">/un</span>
+</div>
+<p class="min-order">Pedido mínimo: 5 un</p>
 
-            <button class="btn-submit-whatsapp" onclick="enviarPedido()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                </svg>
-                Enviar para o WhatsApp
-            </button>
-            <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
-        </div>
-    </div>
+<div class="action-row">
+<div class="quantity-selector">
+<button class="qty-btn" onclick="changeQty('qty-macaron',-1,5)">-</button>
+<input type="text" id="qty-macaron" class="qty-input" value="5" readonly>
+<button class="qty-btn" onclick="changeQty('qty-macaron',1,5)">+</button>
+</div>
+<button class="choose-btn" id="btn-macaron" onclick="selectProduct('macaron')">Escolher</button>
+</div>
+</div>
 
-    <!-- Interactive Logic Script -->
-    <script>
-        let carrinhosDeCompra = {};
+</div>
 
-        function changeQty(inputId, change, minVal) {
-            const input = document.getElementById(inputId);
-            let currentVal = parseInt(input.value);
-            currentVal += change;
-            if (currentVal < minVal) {
-                currentVal = minVal;
-            }
-            input.value = currentVal;
-        }
+<button class="whatsapp-footer-banner" id="whatsapp-btn" onclick="abrirModal()">
+<div class="wp-title">💬 Finalizar e ir para WhatsApp</div>
+<div class="wp-subtitle">Mínimo de 5 unidades por item para encomendas 💕</div>
+</button>
 
-        function selectProduct(inputId, productName, btnId) {
-            const inputVal = parseInt(document.getElementById(inputId).value);
-            const escolheuBtn = document.getElementById(btnId);
+<div class="modal-overlay" id="checkout-modal">
+<div class="modal-content">
+<div class="modal-drag-indicator"></div>
 
-            carrinhosDeCompra[productName] = inputVal;
+<div class="modal-header-text">
+<h2>💕 Vamos finalizar seu atendimento</h2>
+<p>Preencha rapidinho pra te chamarmos no WhatsApp 😊</p>
+</div>
 
-            escolheuBtn.textContent = "✓ Escolhido (" + inputVal + ")";
-            escolheuBtn.classList.add("selected");
+<div class="order-summary-box">
+<span class="summary-title" id="summary-count">0 itens selecionados</span>
+<ul class="summary-items" id="summary-list"></ul>
+</div>
 
-            const whatsappBtn = document.getElementById('whatsapp-btn');
-            whatsappBtn.classList.add('active-green');
-        }
+<div class="form-group">
+<label>Seu nome *</label>
+<input type="text" id="c-nome" placeholder="Como você se chama?">
+</div>
 
-        function abrirModal() {
-            const itemCount = Object.keys(carrinhosDeCompra).filter(k => carrinhosDeCompra[k] > 0).length;
-            
-            if(itemCount === 0) {
-                alert("Por favor, escolha pelo menos um produto antes de finalizar.");
-                return;
-            }
+<div class="form-group">
+<label>Seu WhatsApp *</label>
+<input type="tel" id="c-wpp" placeholder="(11) 99999-9999">
+</div>
 
-            // Atualiza o resumo
-            document.getElementById('summary-count').textContent = itemCount === 1 ? "1 item selecionado" : itemCount + " itens selecionados";
-            
-            const ul = document.getElementById('summary-list');
-            ul.innerHTML = "";
-            for (const [nome, qtd] of Object.entries(carrinhosDeCompra)) {
-                if (qtd > 0) {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<span>${nome}</span> <span>${qtd} un</span>`;
-                    ul.appendChild(li);
-                }
-            }
+<div class="form-row">
+<div class="form-group">
+<label>Data do evento *</label>
+<input type="date" id="c-data">
+</div>
 
-            // Abre o modal
-            document.getElementById('checkout-modal').classList.add('show');
-        }
+<div class="form-group">
+<label>Tema *</label>
+<input type="text" id="c-tema" placeholder="Ex: Unicórnio">
+</div>
+</div>
 
-        function fecharModal() {
-            document.getElementById('checkout-modal').classList.remove('show');
-        }
+<div class="form-group">
+<label>CEP de entrega (opcional)</label>
+<input type="text" id="c-cep" placeholder="00000-000">
+</div>
 
-        function enviarPedido() {
-            // Pegar valores dos inputs
-            const nome = document.getElementById('c-nome').value.trim();
-            const wpp = document.getElementById('c-wpp').value.trim();
-            const data = document.getElementById('c-data').value;
-            const tema = document.getElementById('c-tema').value.trim();
-            const cep = document.getElementById('c-cep').value.trim();
-            const obs = document.getElementById('c-obs').value.trim();
+<div class="form-group">
+<label>Observações (opcional)</label>
+<textarea id="c-obs" placeholder="Algo importante pra gente saber..."></textarea>
+</div>
 
-            // Validação simples
-            if(!nome || !wpp || !data || !tema) {
-                alert("Por favor, preencha todos os campos com asterisco (*).");
-                return;
-            }
+<button class="btn-submit-whatsapp" onclick="enviarPedido()">Enviar para o WhatsApp</button>
+<button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+</div>
+</div>
 
-            // Formatar Data (YYYY-MM-DD para DD/MM/YYYY)
-            const dataFormatada = data.split('-').reverse().join('/');
+<script>
+let state={
+biscoitoTipo:"Padrão",
+biscoitoTam:"5-10 cm",
+biscoitoPreco:10,
+macaronTipo:"Padrão",
+recheio:"Prestígio",
+macaronPreco:9.5
+};
 
-            // Construir a mensagem formatada para WhatsApp
-            let numeroTelefone = "5511973050555";
-            let textoFinal = `Olá, Silvia! Vim do site e já preenchi os dados para o meu orçamento:\n\n`;
-            
-            textoFinal += `📝 *DADOS DO CLIENTE*\n`;
-            textoFinal += `*Nome:* ${nome}\n`;
-            textoFinal += `*WhatsApp:* ${wpp}\n`;
-            textoFinal += `*Data do Evento:* ${dataFormatada}\n`;
-            textoFinal += `*Tema:* ${tema}\n`;
-            if(cep) textoFinal += `*CEP:* ${cep}\n`;
-            if(obs) textoFinal += `*Observações:* ${obs}\n`;
+let carrinhoDeCompra={};
 
-            textoFinal += `\n🛍️ *MEU PEDIDO*\n`;
-            for (const [nomeProduto, quantidade] of Object.entries(carrinhosDeCompra)) {
-                if (quantidade > 0) {
-                    textoFinal += `• ${quantidade}x ${nomeProduto}\n`;
-                }
-            }
+function formatarMoeda(valor){
+return "R$ "+valor.toFixed(2).replace(".",",");
+}
 
-            textoFinal += `\nAguardo o retorno! ✨`;
+function toggle(el,key,value,callback){
+state[key]=value;
 
-            let linkFinal = "https://wa.me/" + numeroTelefone + "?text=" + encodeURIComponent(textoFinal);
-            
-            // Abrir link e fechar modal
-            window.open(linkFinal, '_blank');
-            fecharModal();
-        }
-    </script>
+let group=el.parentElement.querySelectorAll(".option-btn");
+group.forEach(btn=>btn.classList.remove("active"));
+el.classList.add("active");
+
+if(callback) callback();
+
+if(key.indexOf("biscoito")===0) atualizarProdutoSelecionado("biscoito");
+if(key.indexOf("macaron")===0 || key==="recheio") atualizarProdutoSelecionado("macaron");
+}
+
+function calcBiscoito(){
+let p=10;
+
+if(state.biscoitoTipo==="Personalizado"){
+p=14;
+}else{
+if(state.biscoitoTam==="5-10 cm") p=10;
+if(state.biscoitoTam==="10-15 cm") p=15;
+if(state.biscoitoTam==="18+ cm") p=18;
+}
+
+state.biscoitoPreco=p;
+document.getElementById("price-biscoito").innerText=formatarMoeda(p);
+}
+
+function calcMacaron(){
+let p=state.macaronTipo==="Personalizado"?14:9.5;
+state.macaronPreco=p;
+document.getElementById("price-macaron").innerText=formatarMoeda(p);
+}
+
+function changeQty(inputId,change,minVal){
+const input=document.getElementById(inputId);
+let currentVal=parseInt(input.value,10)+change;
+
+if(currentVal<minVal) currentVal=minVal;
+
+input.value=currentVal;
+
+if(inputId==="qty-biscoito") atualizarProdutoSelecionado("biscoito");
+if(inputId==="qty-macaron") atualizarProdutoSelecionado("macaron");
+}
+
+function dadosProduto(produto){
+if(produto==="biscoito"){
+return {
+nome:"Biscoito Decorado",
+qtd:parseInt(document.getElementById("qty-biscoito").value,10),
+detalhes:["Tipo: "+state.biscoitoTipo,"Tamanho: "+state.biscoitoTam],
+preco:state.biscoitoPreco
+};
+}
+
+return {
+nome:"Macaron",
+qtd:parseInt(document.getElementById("qty-macaron").value,10),
+detalhes:["Tipo: "+state.macaronTipo,"Recheio: "+state.recheio],
+preco:state.macaronPreco
+};
+}
+
+function selectProduct(produto){
+carrinhoDeCompra[produto]=dadosProduto(produto);
+atualizarBotaoProduto(produto);
+document.getElementById("whatsapp-btn").classList.add("active-green");
+}
+
+function atualizarProdutoSelecionado(produto){
+if(!carrinhoDeCompra[produto]) return;
+carrinhoDeCompra[produto]=dadosProduto(produto);
+atualizarBotaoProduto(produto);
+}
+
+function atualizarBotaoProduto(produto){
+const item=carrinhoDeCompra[produto];
+const btn=document.getElementById(produto==="biscoito"?"btn-biscoito":"btn-macaron");
+
+if(!item || item.qtd<=0){
+btn.textContent="Escolher";
+btn.classList.remove("selected");
+return;
+}
+
+btn.textContent="✓ Escolhido ("+item.qtd+")";
+btn.classList.add("selected");
+}
+
+function itensSelecionados(){
+return Object.values(carrinhoDeCompra).filter(item=>item.qtd>0);
+}
+
+function abrirModal(){
+const itens=itensSelecionados();
+
+if(itens.length===0){
+alert("Por favor, escolha pelo menos um produto antes de finalizar.");
+return;
+}
+
+document.getElementById("summary-count").textContent=itens.length===1?"1 item selecionado":itens.length+" itens selecionados";
+
+const ul=document.getElementById("summary-list");
+ul.innerHTML="";
+
+itens.forEach(item=>{
+const li=document.createElement("li");
+const total=item.preco*item.qtd;
+
+li.innerHTML=`<span><span class="summary-item-main">${item.nome}</span><span class="summary-item-details">${item.detalhes.join(" | ")}</span></span><span>${item.qtd} un<br>${formatarMoeda(total)}</span>`;
+ul.appendChild(li);
+});
+
+document.getElementById("checkout-modal").classList.add("show");
+}
+
+function fecharModal(){
+document.getElementById("checkout-modal").classList.remove("show");
+}
+
+function enviarPedido(){
+const nome=document.getElementById("c-nome").value.trim();
+const wpp=document.getElementById("c-wpp").value.trim();
+const data=document.getElementById("c-data").value;
+const tema=document.getElementById("c-tema").value.trim();
+const cep=document.getElementById("c-cep").value.trim();
+const obs=document.getElementById("c-obs").value.trim();
+const itens=itensSelecionados();
+
+if(!nome || !wpp || !data || !tema){
+alert("Por favor, preencha todos os campos com asterisco (*).");
+return;
+}
+
+const dataFormatada=data.split("-").reverse().join("/");
+let numeroTelefone="5511973050555";
+
+let textoFinal=`Olá, Silvia! Vim do site e já preenchi os dados para o meu orçamento:\n\n`;
+
+textoFinal+=`📝 *DADOS DO CLIENTE*\n`;
+textoFinal+=`*Nome:* ${nome}\n`;
+textoFinal+=`*WhatsApp:* ${wpp}\n`;
+textoFinal+=`*Data do Evento:* ${dataFormatada}\n`;
+textoFinal+=`*Tema:* ${tema}\n`;
+if(cep) textoFinal+=`*CEP:* ${cep}\n`;
+if(obs) textoFinal+=`*Observações:* ${obs}\n`;
+
+textoFinal+=`\n🛍️ *MEU PEDIDO*\n`;
+
+itens.forEach(item=>{
+const total=item.preco*item.qtd;
+textoFinal+=`• ${item.qtd}x ${item.nome}\n`;
+textoFinal+=`  ${item.detalhes.join(" | ")}\n`;
+textoFinal+=`  ${formatarMoeda(item.preco)}/un - Total: ${formatarMoeda(total)}\n`;
+});
+
+textoFinal+=`\nAguardo o retorno! ✨`;
+
+let linkFinal="https://wa.me/"+numeroTelefone+"?text="+encodeURIComponent(textoFinal);
+window.open(linkFinal,"_blank");
+fecharModal();
+}
+</script>
 
 </body>
 </html>
