@@ -6,81 +6,475 @@
 <title>Silvia Costa Cookier</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
-body{background:#fdfafb;display:flex;justify-content:center;padding-bottom:150px;color:#4a3e40}
-.main-container{width:100%;max-width:650px;padding:12px}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
 
-.header{text-align:center;margin-bottom:15px;background:#fff;border-radius:20px;padding:24px 16px;border:1px solid #f9eff2;box-shadow:0 6px 16px rgba(230,164,180,.08)}
-.header h1{font-size:1.6rem;color:#5c4447;font-weight:800;margin-bottom:8px}
-.header p{font-size:.9rem;color:#8c7679}
+body{
+background:#fdfafb;
+display:flex;
+justify-content:center;
+padding-bottom:150px;
+color:#4a3e40;
+}
 
-.notice-banner{background:#fffaf0;border-radius:16px;padding:14px;text-align:center;font-size:.85rem;color:#6e5d42;line-height:1.4;margin-bottom:20px;border:1px solid #f7eedb}
+.main-container{
+width:100%;
+max-width:650px;
+padding:12px;
+}
 
-.divider{margin:20px 0;display:flex;align-items:center;gap:10px;color:#d48c9c;font-size:.78rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
-.divider:before,.divider:after{content:"";flex:1;height:1px;background:#f2e2e5}
+.header{
+text-align:center;
+margin-bottom:15px;
+background:#fff;
+border-radius:20px;
+padding:24px 16px;
+border:1px solid #f9eff2;
+box-shadow:0 6px 16px rgba(230,164,180,.08);
+}
 
-.product-card{background:#fff;border-radius:22px;padding:14px;margin-bottom:20px;border:1px solid #f6e9ec;box-shadow:0 6px 18px rgba(0,0,0,.04);transition:.2s}
-.product-card:hover{transform:translateY(-2px)}
-.product-image-container{height:240px;border-radius:16px;overflow:hidden;margin-bottom:12px;background:#faf6f7}
-.product-image-container img{width:100%;height:100%;object-fit:cover;display:block}
-.product-title{font-size:1.15rem;font-weight:800;color:#4a3e40;margin-bottom:8px}
+.header h1{
+font-size:1.6rem;
+color:#5c4447;
+font-weight:800;
+margin-bottom:8px;
+}
 
-.option-group{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.option-btn{padding:9px 14px;border-radius:999px;border:1px solid #ead6da;background:#fff;font-size:.8rem;font-weight:600;cursor:pointer;transition:.25s;color:#4a3e40}
-.option-btn:hover{transform:scale(1.03);background:#fff0f3}
-.option-btn.active{background:linear-gradient(135deg,#d48c9c,#c97384);color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(201,115,132,.25);transform:scale(1.05)}
+.header p{
+font-size:.9rem;
+color:#8c7679;
+}
 
-.price-row{display:flex;align-items:center;gap:8px;margin-top:8px}
-.product-price{font-size:1.3rem;font-weight:900;color:#c97384}
-.price-unit{font-size:.8rem;color:#9c8588}
-.min-order{font-size:.78rem;color:#9c8588;margin-top:4px}
+.notice-banner{
+background:#fffaf0;
+border-radius:16px;
+padding:14px;
+text-align:center;
+font-size:.85rem;
+color:#6e5d42;
+line-height:1.4;
+margin-bottom:20px;
+border:1px solid #f7eedb;
+}
 
-.action-row{display:flex;gap:10px;margin-top:12px}
-.quantity-selector{display:flex;border:1px solid #ebdada;border-radius:12px;overflow:hidden;background:#fdfafb}
-.qty-btn{width:40px;height:40px;border:none;background:#fff;cursor:pointer;font-size:18px;color:#c97384;display:flex;align-items:center;justify-content:center}
-.qty-btn:hover{background:#fff0f3}
-.qty-input{width:45px;height:40px;text-align:center;border:none;border-left:1px solid #ebdada;border-right:1px solid #ebdada;font-weight:700;color:#5c4447;background:#fff}
-.choose-btn{flex:1;min-height:40px;border:none;border-radius:12px;background:#d48c9c;color:#fff;font-weight:700;font-size:.9rem;cursor:pointer;transition:.25s}
-.choose-btn:hover{background:#c97384;transform:scale(1.02)}
-.choose-btn.selected{background:#4a3e40}
+.divider{
+margin:20px 0;
+display:flex;
+align-items:center;
+gap:10px;
+color:#d48c9c;
+font-size:.78rem;
+font-weight:800;
+letter-spacing:1.2px;
+text-transform:uppercase;
+}
 
-.whatsapp-footer-banner{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:580px;background:#e6a4b4;color:#fff;border-radius:16px;padding:14px 15px;text-align:center;box-shadow:0 8px 24px rgba(230,164,180,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;cursor:pointer;border:none}
-.whatsapp-footer-banner.active-green{background:#72cca7!important;box-shadow:0 8px 24px rgba(114,204,167,.35)!important}
-.wp-title{font-weight:700;font-size:1rem;margin-bottom:2px}
-.wp-subtitle{font-size:.78rem;opacity:.95}
+.divider:before,.divider:after{
+content:"";
+flex:1;
+height:1px;
+background:#f2e2e5;
+}
 
-.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:999999;opacity:0;transition:opacity .3s}
-.modal-overlay.show{display:flex;opacity:1}
-.modal-content{background:#fff;width:100%;max-width:600px;max-height:90vh;border-radius:24px 24px 0 0;padding:20px 24px 30px;overflow-y:auto;transform:translateY(100%);transition:transform .3s;display:flex;flex-direction:column}
-.modal-overlay.show .modal-content{transform:translateY(0)}
-.modal-drag-indicator{width:40px;height:4px;background:#ebdada;border-radius:4px;margin:0 auto 15px}
-.modal-header-text{text-align:center;margin-bottom:20px}
-.modal-header-text h2{font-size:1.3rem;color:#2c1a1d;margin-bottom:4px}
-.modal-header-text p{font-size:.85rem;color:#8c7679}
+.product-card{
+background:#fff;
+border-radius:22px;
+padding:14px;
+margin-bottom:20px;
+border:1px solid #f6e9ec;
+box-shadow:0 6px 18px rgba(0,0,0,.04);
+transition:.2s;
+}
 
-.order-summary-box{background:#fffafb;border:1px solid #f2e2e5;border-radius:12px;padding:12px 16px;margin-bottom:20px}
-.summary-title{font-size:.75rem;font-weight:700;color:#d48c9c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:block}
-.summary-items{list-style:none}
-.summary-items li{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;color:#5c4447;margin-bottom:6px;border-bottom:1px dashed #f2e2e5;padding-bottom:6px}
-.summary-items li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.summary-item-main{font-weight:700;display:block}
-.summary-item-details{font-size:.78rem;color:#9c8588;display:block;margin-top:2px}
+.product-card:hover{
+transform:translateY(-2px);
+}
 
-.form-row{display:flex;gap:12px;margin-bottom:14px}
-.form-group{flex:1;display:flex;flex-direction:column;margin-bottom:14px}
-.form-group label{font-size:.85rem;font-weight:600;color:#5c4447;margin-bottom:6px}
-.form-group input,.form-group textarea{width:100%;padding:12px;border:1px solid #ebdada;border-radius:10px;font-size:.95rem;color:#2c1a1d;background:#fff;outline:none}
-.form-group input:focus,.form-group textarea:focus{border-color:#d48c9c}
-.form-group textarea{resize:vertical;min-height:80px}
+.product-image-container{
+height:240px;
+border-radius:16px;
+overflow:hidden;
+margin-bottom:12px;
+background:#faf6f7;
+}
 
-.btn-submit-whatsapp{background:#25d366;color:#fff;border:none;border-radius:12px;padding:14px;font-size:1rem;font-weight:700;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
-.btn-submit-whatsapp:hover{background:#1ebc5a}
-.btn-cancel{background:none;border:none;color:#d48c9c;font-size:.9rem;margin-top:15px;cursor:pointer;text-align:center;width:100%}
+.product-image-container img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.product-title{
+font-size:1.15rem;
+font-weight:800;
+color:#4a3e40;
+margin-bottom:8px;
+}
+
+.option-group{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin:10px 0;
+}
+
+.option-btn{
+padding:9px 14px;
+border-radius:999px;
+border:1px solid #ead6da;
+background:#fff;
+font-size:.8rem;
+font-weight:600;
+cursor:pointer;
+transition:.25s;
+color:#4a3e40;
+}
+
+.option-btn:hover{
+transform:scale(1.03);
+background:#fff0f3;
+}
+
+.option-btn.active{
+background:linear-gradient(135deg,#d48c9c,#c97384);
+color:#fff;
+border-color:transparent;
+box-shadow:0 6px 14px rgba(201,115,132,.25);
+transform:scale(1.05);
+}
+
+.price-row{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:8px;
+}
+
+.product-price{
+font-size:1.3rem;
+font-weight:900;
+color:#c97384;
+}
+
+.price-unit{
+font-size:.8rem;
+color:#9c8588;
+}
+
+.min-order{
+font-size:.78rem;
+color:#9c8588;
+margin-top:4px;
+}
+
+.action-row{
+display:flex;
+gap:10px;
+margin-top:12px;
+}
+
+.quantity-selector{
+display:flex;
+border:1px solid #ebdada;
+border-radius:12px;
+overflow:hidden;
+background:#fdfafb;
+}
+
+.qty-btn{
+width:40px;
+height:40px;
+border:none;
+background:#fff;
+cursor:pointer;
+font-size:18px;
+color:#c97384;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.qty-btn:hover{
+background:#fff0f3;
+}
+
+.qty-input{
+width:45px;
+height:40px;
+text-align:center;
+border:none;
+border-left:1px solid #ebdada;
+border-right:1px solid #ebdada;
+font-weight:700;
+color:#5c4447;
+background:#fff;
+}
+
+.choose-btn{
+flex:1;
+min-height:40px;
+border:none;
+border-radius:12px;
+background:#d48c9c;
+color:#fff;
+font-weight:700;
+font-size:.9rem;
+cursor:pointer;
+transition:.25s;
+}
+
+.choose-btn:hover{
+background:#c97384;
+transform:scale(1.02);
+}
+
+.choose-btn.selected{
+background:#4a3e40;
+}
+
+.whatsapp-footer-banner{
+position:fixed;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+width:calc(100% - 24px);
+max-width:580px;
+background:#e6a4b4;
+color:#fff;
+border-radius:16px;
+padding:14px 15px;
+text-align:center;
+box-shadow:0 8px 24px rgba(230,164,180,.25);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+cursor:pointer;
+border:none;
+}
+
+.whatsapp-footer-banner.active-green{
+background:#72cca7!important;
+box-shadow:0 8px 24px rgba(114,204,167,.35)!important;
+}
+
+.wp-title{
+font-weight:700;
+font-size:1rem;
+margin-bottom:2px;
+}
+
+.wp-subtitle{
+font-size:.78rem;
+opacity:.95;
+}
+
+.modal-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:flex-end;
+justify-content:center;
+z-index:999999;
+opacity:0;
+transition:opacity .3s;
+}
+
+.modal-overlay.show{
+display:flex;
+opacity:1;
+}
+
+.modal-content{
+background:#fff;
+width:100%;
+max-width:600px;
+max-height:90vh;
+border-radius:24px 24px 0 0;
+padding:20px 24px 30px;
+overflow-y:auto;
+transform:translateY(100%);
+transition:transform .3s;
+display:flex;
+flex-direction:column;
+}
+
+.modal-overlay.show .modal-content{
+transform:translateY(0);
+}
+
+.modal-drag-indicator{
+width:40px;
+height:4px;
+background:#ebdada;
+border-radius:4px;
+margin:0 auto 15px;
+}
+
+.modal-header-text{
+text-align:center;
+margin-bottom:20px;
+}
+
+.modal-header-text h2{
+font-size:1.3rem;
+color:#2c1a1d;
+margin-bottom:4px;
+}
+
+.modal-header-text p{
+font-size:.85rem;
+color:#8c7679;
+}
+
+.order-summary-box{
+background:#fffafb;
+border:1px solid #f2e2e5;
+border-radius:12px;
+padding:12px 16px;
+margin-bottom:20px;
+}
+
+.summary-title{
+font-size:.75rem;
+font-weight:700;
+color:#d48c9c;
+text-transform:uppercase;
+letter-spacing:.5px;
+margin-bottom:8px;
+display:block;
+}
+
+.summary-items{
+list-style:none;
+}
+
+.summary-items li{
+display:flex;
+justify-content:space-between;
+gap:12px;
+font-size:.9rem;
+color:#5c4447;
+margin-bottom:6px;
+border-bottom:1px dashed #f2e2e5;
+padding-bottom:6px;
+}
+
+.summary-items li:last-child{
+border-bottom:none;
+margin-bottom:0;
+padding-bottom:0;
+}
+
+.summary-item-main{
+font-weight:700;
+display:block;
+}
+
+.summary-item-details{
+font-size:.78rem;
+color:#9c8588;
+display:block;
+margin-top:2px;
+}
+
+.form-row{
+display:flex;
+gap:12px;
+margin-bottom:14px;
+}
+
+.form-group{
+flex:1;
+display:flex;
+flex-direction:column;
+margin-bottom:14px;
+}
+
+.form-group label{
+font-size:.85rem;
+font-weight:600;
+color:#5c4447;
+margin-bottom:6px;
+}
+
+.form-group input,.form-group textarea{
+width:100%;
+padding:12px;
+border:1px solid #ebdada;
+border-radius:10px;
+font-size:.95rem;
+color:#2c1a1d;
+background:#fff;
+outline:none;
+}
+
+.form-group input:focus,.form-group textarea:focus{
+border-color:#d48c9c;
+}
+
+.form-group textarea{
+resize:vertical;
+min-height:80px;
+}
+
+.btn-submit-whatsapp{
+background:#25d366;
+color:#fff;
+border:none;
+border-radius:12px;
+padding:14px;
+font-size:1rem;
+font-weight:700;
+width:100%;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+margin-top:10px;
+}
+
+.btn-submit-whatsapp:hover{
+background:#1ebc5a;
+}
+
+.btn-cancel{
+background:none;
+border:none;
+color:#d48c9c;
+font-size:.9rem;
+margin-top:15px;
+cursor:pointer;
+text-align:center;
+width:100%;
+}
 
 @media(max-width:480px){
-.product-image-container{height:200px}
-.whatsapp-footer-banner{bottom:12px;width:calc(100% - 20px)}
-.form-row{flex-direction:column;gap:0;margin-bottom:0}
+.product-image-container{
+height:200px;
+}
+
+.whatsapp-footer-banner{
+bottom:12px;
+width:calc(100% - 20px);
+}
+
+.form-row{
+flex-direction:column;
+gap:0;
+margin-bottom:0;
+}
 }
 </style>
 </head>
@@ -103,7 +497,7 @@ body{background:#fdfafb;display:flex;justify-content:center;padding-bottom:150px
 
 <div class="product-card">
 <div class="product-image-container">
-<img src="https://i.postimg.cc/NGXLNWy9/Captura-de-tela-2026-06-25-131136.png" alt="Biscoito Decorado">
+<img src="./imagens/biscoito.png" alt="Biscoito Decorado">
 </div>
 
 <div class="product-title">Biscoito Decorado</div>
@@ -139,7 +533,7 @@ body{background:#fdfafb;display:flex;justify-content:center;padding-bottom:150px
 
 <div class="product-card">
 <div class="product-image-container">
-<img src="https://i.postimg.cc/brfYcwGf/Captura-de-tela-2026-06-25-131225.png" alt="Macaron">
+<img src="./imagens/macaron.png" alt="Macaron">
 </div>
 
 <div class="product-title">Macaron</div>
